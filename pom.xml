@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Versión del modelo POM de Maven -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM de Spring Boot, se utiliza para heredar configuraciones comunes y versiones compatibles -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.5</version>
+		<relativePath/> <!-- Búsqueda automática del POM principal -->
+	</parent>
+
+	<!-- Información básica del proyecto -->
+	<groupId>com</groupId> <!-- Grupo del proyecto, normalmente el dominio invertido -->
+	<artifactId>desafio2</artifactId> <!-- Identificador único del proyecto en el repositorio -->
+	<version>0.0.1-SNAPSHOT</version> <!-- Versión del proyecto, 'SNAPSHOT' indica una versión en desarrollo -->
+	<name>desafio2</name> <!-- Nombre legible del proyecto -->
+	<description>Demo project for Spring Boot</description> <!-- Descripción corta del proyecto -->
+
+	<!-- Configuración de propiedades -->
+	<properties>
+		<java.version>17</java.version> <!-- Define la versión de Java para la compilación -->
+	</properties>
+
+	<!-- Dependencias que se incluyen en el proyecto -->
+	<dependencies>
+		<!-- Starter de Spring Data JPA para la integración con bases de datos relacionales -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Driver para la base de datos PostgreSQL -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
+		<!-- Starter web para la creación de aplicaciones web con Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Starter de logging de Spring Boot (por defecto utiliza Logback) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+
+		<!-- Biblioteca de Jackson para la serialización y deserialización de JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<!-- Starter para Thymeleaf, motor de plantillas para generar vistas HTML -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- Lombok, útil para generar código repetitivo como getters/setters y constructores -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional> <!-- Indica que Lombok no es necesario para la compilación en runtime -->
+		</dependency>
+	</dependencies>
+
+	<!-- Configuración de la construcción del proyecto -->
+	<build>
+		<plugins>
+			<!-- Plugin para empaquetar la aplicación Spring Boot en un archivo ejecutable -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<!-- Excluir Lombok del empaquetado final, ya que no es necesario en el JAR generado -->
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
